@@ -57,18 +57,17 @@ int main(){
 
             pt[++j]=0;
             elapsedTime++;
-            pt[++k]=elapsedTime;
+            tt[++k]=elapsedTime;
             continue;
         }
 
         if(processes[p].bt==processes[p].rm){
             processes[p].rt=elapsedTime-processes[p].at;
-            trt=trt+processes[p].rt;
         }
 
         processes[p].rm--;
-        pt[++j]=processes[p].Pid;
         elapsedTime++;
+        pt[++j]=processes[p].Pid;
         tt[++k]=elapsedTime;
 
         if(processes[p].rm==0){
@@ -78,18 +77,19 @@ int main(){
             processes[p].wt=processes[p].tt-processes[p].bt;
             ttt=ttt+processes[p].tt;
             twt=twt+processes[p].wt;
+            trt=trt+processes[p].rt;
             rp--;
         }
 
     }
 
      printf("\nGantt Chart\n(P0-->idle time)\n");
-    for (int i = 0; i <= k; i++)
+    for (int i = 0; i <= j; i++)
         printf("| P%d\t", pt[i]);
 
     printf("|\n");
 
-    for (int i = 0; i <= j; i++)
+    for (int i = 0; i <= k; i++)
         printf("%d\t", tt[i]);
 
 
